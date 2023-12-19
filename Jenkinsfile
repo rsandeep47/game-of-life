@@ -5,7 +5,7 @@ pipeline {
         stage('Clone code from SCM') {
             steps {
                 echo 'Get code from GITHUB SCM'
-				git branch: 'main', url: 'https://github.com/rsandeep47/JavaApp1.git'
+				git branch: 'main', url: 'https://github.com/rsandeep47/game-of-life.git'
             }
         }
 		stage('Build Artifact') {
@@ -17,7 +17,7 @@ pipeline {
 		stage('Deploy') {
             steps {
                 echo 'Deployed on Tomcat'
-				deploy adapters: [tomcat9(credentialsId: 'TomcatCredntials', path: '', url: 'http://18.208.217.74:8081/')], contextPath: 'JavaApp', war: '**/*.war'
+				deploy adapters: [tomcat9(credentialsId: 'TomcatCredntials', path: '', url: 'http://184.73.54.150:8081/')], contextPath: 'GameofLifePipeline', war: '**/*.war'
             }
         }
     }
